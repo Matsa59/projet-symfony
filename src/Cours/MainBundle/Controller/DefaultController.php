@@ -18,7 +18,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/list")
+     * @Route("/list", name="listUser")
      * @Template()
      */
     public function listAction()
@@ -28,5 +28,21 @@ class DefaultController extends Controller
         $listUsers = $em->findAll();
 
         return array('listUsers' => $listUsers);
+    }
+
+    /**
+     * @Route("/list/remove/{id}", name="remove")
+     */
+    public function listActionRemove($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository("CoursUserBundle:User");
+
+        $user = $repo->find($id);
+
+        $em->remove($user);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('listUser'));
     }
 }

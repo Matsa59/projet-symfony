@@ -5,10 +5,16 @@ List of users :
     <li> {{ key }} :
         <ul>
             <li>
+                id : {{ user.id }}
+            </li>
+            <li>
                 nom : {{ user.username }}
             </li>
             <li>
                 email : {{ user.email }}
+            </li>
+            <li>
+                remove : <a href="{{ path('remove', {'id': user.id}) }}">Supprimer</a>
             </li>
         </ul>
     </li>
