@@ -1,0 +1,16 @@
+List of users :
+
+<ul>
+{% for key, user in listUsers %}
+    <li> {{ key }} :
+        <ul>
+            <li>
+                nom : {{ user.username }}
+            </li>
+            <li>
+                email : {{ user.email }}
+            </li>
+        </ul>
+    </li>
+{% endfor %}
+</ul>
